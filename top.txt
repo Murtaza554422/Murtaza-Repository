@@ -1,0 +1,12 @@
+SELECT TOP(10) PERCENT
+CustomerKey As Customer_ID,
+--SalesTerritoryKey as Key1,
+SUM(SalesAmount) as Total_Amount,
+SUM(TaxAmt) as Tax_amount,
+Sum(OrderQuantity) as total_order
+
+FROM FactInternetSales
+WHERE SalesTerritoryKey=6
+GROUP by CustomerKey
+HAVING SUM(OrderQuantity)>2
+ORDER by CustomerKey DESC;
